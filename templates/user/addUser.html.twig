@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add planet{% endblock %}
+
+{% block body %}
+<style></style>
+
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center fullScreen">
+
+
+        {{ form_start(form) }}
+
+        <p class="mb-0 font-weight-bold">{{ form_label(form.name) }}</p>
+        <p class="mb-5">{{ form_widget(form.name) }}</p>
+
+        <p class="mb-0 font-weight-bold">{{ form_label(form.lastname) }}</p>
+        <p class="mb-5">{{ form_widget(form.lastname) }}</p>
+        
+        <p class="mb-0 font-weight-bold">{{ form_label(form.email) }}</p>
+        <p class="mb-5">{{ form_widget(form.email) }}</p>
+        
+        <p class="mb-0 font-weight-bold">{{ form_label(form.password) }}</p>
+        <p class="mb-5">{{ form_widget(form.password) }}</p>
+        
+        <p class="mb-0 font-weight-bold">{{ form_label(form.secteur) }}</p>
+        <p class="mb-5">{{ form_widget(form.secteur) }}</p>
+
+        {{ form_label(form.save) }}
+        {{ form_widget(form.save) }}
+
+        {{ form_end(form, { 'render_rest' : false }) }}
+
+    </div>
+    
+    {% if form.vars.errors.form.getErrors(true)|length > 0 %}
+        <h2>Erreurs</h2>
+        <ul>
+            {% for error in form.vars.errors.form.getErrors(true) %}
+                <li>{{ error.message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</div>
+{% endblock %}

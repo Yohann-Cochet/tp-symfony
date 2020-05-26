@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<style></style>
+
+<div class="accueil fullScreen d-flex align-items-center justify-content-center">
+    <div class="container">
+        <h1 class="text-white"><span class="text-warning"><span class="font-weight-bold">Em</span>Listing</span>
+        <br> vous accompagne dans la liste de vos employé(e)s
+        <br> tout au long de l'année.
+        </h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="fullScreen d-flex justify-content-center align-items-center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Secteur</th>
+                    <th scope="col">Édition</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <th>{{ user.id }}</th>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.lastname }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.picture }}</td>
+                        <td>{{ user.secteur }}</td>
+                        <td>
+                            <a href="{{ path('delete_user', { 'user' : user.id }) }}" class="btn btn-outline-dark rounded-pill my-2 my-sm-0">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
